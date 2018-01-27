@@ -16,6 +16,13 @@ public class RobotMap {
 	public static int leftIntakePacman = 3;
 	public static int rightIntakePacman = 4;
 
+	public static int liftmotor = 2;
+	
+	// Digital IO
+	
+	public static int liftencoderA = 4;
+	public static int liftencoderB = 5;
+
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
