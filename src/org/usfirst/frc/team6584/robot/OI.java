@@ -1,8 +1,11 @@
 package org.usfirst.frc.team6584.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
+import org.usfirst.frc.team6584.robot.commands.WheelsIn;
+import org.usfirst.frc.team6584.robot.commands.WheelsOut;
 import org.usfirst.frc.team708.robot.util.Gamepad;
 
 /**
@@ -15,8 +18,19 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	public Gamepad driverstick = new Gamepad (0);
-	public Gamepad operatorstick = new Gamepad (1);
+	public static Gamepad driverstick = new Gamepad (0);
+	public static Gamepad operatorstick = new Gamepad (1);
+	
+	public static int INTAKE_IN = Gamepad.button_L_Shoulder;
+	public static int INTAKE_OUT = Gamepad.button_L_Shoulder;
+	
+	public static Button intakeInButton = new JoystickButton(operatorstick, INTAKE_IN);
+	public static Button intakeOutButton = new JoystickButton(operatorstick, INTAKE_OUT);
+	public OI() { 
+		intakeInButton.whileHeld(new WheelsIn());
+		intakeOutButton.whileHeld(new WheelsOut());
+	}
+	
 	// Button button = new JoystickButton(stick, buttonNumber);
 
 	// There are a few additional built in buttons you can use. Additionally,
