@@ -1,29 +1,30 @@
 package org.usfirst.frc.team6584.robot.commands;
 
 import org.usfirst.frc.team6584.robot.Robot;
+import org.usfirst.frc.team708.robot.util.Gamepad;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class WheelsIn extends Command {
+public class JoystickLift extends Command {
 
-    public WheelsIn() {
+    public JoystickLift() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.intakepacman);
+        // eg. requires(chassis);
+    	requires(Robot.lift);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intakepacman.wheelsMove(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakepacman.wheelsMove(1);
+    	Robot.lift.liftMove(Robot.oi.operatorstick.getAxis(Gamepad.rightStick_Y));
     }
-
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
@@ -31,12 +32,10 @@ public class WheelsIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intakepacman.wheelsStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

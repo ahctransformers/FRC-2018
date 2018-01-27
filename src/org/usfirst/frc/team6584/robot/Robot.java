@@ -10,7 +10,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.subsystems.Drivetrain;
+<<<<<<< HEAD
 import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
+=======
+import org.usfirst.frc.team6584.robot.subsystems.Lift;
+>>>>>>> origin/master
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,10 +26,14 @@ import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
 public class Robot extends IterativeRobot {
 
 	public static final Drivetrain drivetrain = new Drivetrain();
+
 	public static final IntakePacman intakepacman = new IntakePacman();
 
-	public static OI oi;
 
+	public static final Lift lift = new Lift();
+
+	public static OI oi;
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 

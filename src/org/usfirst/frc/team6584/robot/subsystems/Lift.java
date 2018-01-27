@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6584.robot.subsystems;
 
 import org.usfirst.frc.team6584.robot.RobotMap;
+import org.usfirst.frc.team6584.robot.commands.JoystickLift;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -32,7 +33,11 @@ public class Lift extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new JoystickLift());
     }
-}
+
+
+		
+	}
+
 
