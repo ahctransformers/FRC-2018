@@ -10,11 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.subsystems.Drivetrain;
-<<<<<<< HEAD
 import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
-=======
 import org.usfirst.frc.team6584.robot.subsystems.Lift;
->>>>>>> origin/master
 
 /**
  * The VM is configured to automatically run this class, and to call the

@@ -22,7 +22,9 @@ public class RobotMap {
 	
 	public static int liftencoderA = 4;
 	public static int liftencoderB = 5;
-
+	public static int countencoderA = 0;
+	public static int countencoderB = 1;
+	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
