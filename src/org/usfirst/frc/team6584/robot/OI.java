@@ -22,7 +22,7 @@ public class OI {
 	public static Gamepad operatorstick = new Gamepad (1);
 	
 	public static int INTAKE_IN = Gamepad.button_L_Shoulder;
-	public static int INTAKE_OUT = Gamepad.button_L_Shoulder;
+	public static int INTAKE_OUT = Gamepad.button_R_Shoulder;
 	
 	public static Button intakeInButton = new JoystickButton(operatorstick, INTAKE_IN);
 	public static Button intakeOutButton = new JoystickButton(operatorstick, INTAKE_OUT);
