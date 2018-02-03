@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team6584.robot.commands.DriveToDistance;
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
@@ -22,6 +23,10 @@ import org.usfirst.frc.team6584.robot.subsystems.Lift;
  */
 public class Robot extends IterativeRobot {
 
+	Command autonomousCommand1; 
+	SendableChooser autoChooser; 
+	
+	
 	public static final Drivetrain drivetrain = new Drivetrain();
 
 	public static final IntakePacman intakepacman = new IntakePacman();
@@ -40,12 +45,17 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Default", new DriveToDistance (10));
+		autoChooser.addObject("Forward", new DriveToDistance (10));
+		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+		
 		oi = new OI();
 		chooser.addDefault("Default Auto", new JoystickMove());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
-
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -74,8 +84,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
+		autonomousCommand1 = chooser.getSelected();
+		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand.start(); 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -84,8 +95,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		if (autonomousCommand1 != null)
+			autonomousCommand1.start();
 	}
 
 	/**
@@ -102,8 +113,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		if (autonomousCommand1 != null)
+			autonomousCommand1.cancel();
 	}
 
 	/**
