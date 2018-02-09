@@ -3,6 +3,7 @@ package org.usfirst.frc.team6584.robot.subsystems;
 import org.usfirst.frc.team6584.robot.RobotMap;
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,15 +13,20 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class Drivetrain extends Subsystem {
-	Spark rightmotor = new Spark(RobotMap.leftDrivetrainMotor); //object
-	Spark leftmotor = new Spark(RobotMap.rightDrivetrainMotor);
-	Encoder countencoder = new Encoder(RobotMap.countencoderA, RobotMap.countencoderB);
-
-	DifferentialDrive swagMove = new DifferentialDrive (rightmotor, leftmotor);
+	Spark leftmotor, rightmotor; //object
+	Encoder countencoder;
+	ADXRS450_Gyro gyro;
+	DifferentialDrive swagMove;
 	
 	private final double distancePerPulse = 0.0526389;
 	
 	public Drivetrain () {
+		rightmotor   = new Spark(RobotMap.leftDrivetrainMotor);
+		leftmotor    = new Spark(RobotMap.rightDrivetrainMotor);
+		countencoder = new Encoder(RobotMap.countencoderA, RobotMap.countencoderB);
+		swagMove     = new DifferentialDrive (rightmotor, leftmotor);
+		gyro         = new ADXRS450_Gyro();
+		
 		countencoder.setDistancePerPulse(distancePerPulse);
 	}
 	
@@ -32,6 +38,14 @@ public class Drivetrain extends Subsystem {
 	
 	public double getDistance (){
 		return countencoder.getDistance();
+	}
+	
+	public double getGucciAngle (){
+		return gyro.getAngle();
+	}
+	
+	public void resetGyro (){
+		gyro.reset();
 	}
 	
 	// Put methods for controlling this subsystem

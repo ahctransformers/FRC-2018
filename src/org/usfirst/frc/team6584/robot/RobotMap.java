@@ -18,6 +18,7 @@ public class RobotMap {
 
 	public static int liftmotor = 2;
 	
+	public static int winchmotor = 5; 
 	// Digital IO
 	
 	public static int liftencoderA = 4;
