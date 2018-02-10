@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team6584.robot.commands.AutoSwitch;
 import org.usfirst.frc.team6584.robot.commands.DriveToDistance;
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.commands.ResetEncoder;
@@ -57,6 +58,7 @@ public class Robot extends IterativeRobot {
 		
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
 		autoChooser.addObject("Drive to Baseline", new DriveToDistance (10));
+		autoChooser.addObject("AutoSwitch", new AutoSwitch()); 
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 		
 		chooser.addDefault("Default Auto", new JoystickMove());
@@ -67,8 +69,7 @@ public class Robot extends IterativeRobot {
 	     SmartDashboard.putData("Reset Encoder", new ResetEncoder());
 	     SmartDashboard.putData(drivetrain);
 	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
-	        
-		
+	        		
 		 CameraServer.getInstance().startAutomaticCapture(0);
 	  // CameraServer.getInstance().startAutomaticCapture(1);
 		
@@ -87,6 +88,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		drivetrain.SendToDashboard();
 	}
 
 	/**
@@ -123,6 +125,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		drivetrain.SendToDashboard();
 	}
 
 	@Override
@@ -141,8 +144,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		drivetrain.SendToDashboard();
 	}
-
+	
+	
 	/**
 	 * This function is called periodically during test mode
 	 */

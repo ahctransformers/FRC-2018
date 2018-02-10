@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -29,6 +30,15 @@ public class Drivetrain extends Subsystem {
 		
 		countencoder.setDistancePerPulse(distancePerPulse);
 	}
+	
+	public void SendToDashboard() {
+		SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
+		SmartDashboard.putNumber("Gyro angle",getGucciAngle());
+		SmartDashboard.putNumber("Encoder distance", getDistance());
+		
+	}
+	
+	
 	
 	public void accelerate (double move, double turn) { // methods 
 		

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -25,10 +26,10 @@ public class Lift extends Subsystem {
 		liftmotor.set (0);
 	}
 
-	public double getDistance (){
-		return liftswitch.getDistance();
-		
-	}
+	public boolean isSwitchPressed (){
+		return liftswitch.get();
+	} 
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -37,7 +38,10 @@ public class Lift extends Subsystem {
         setDefaultCommand(new JoystickLift());
     }
 
-
+    public void SendtoDashboard() {
+    	SmartDashboard.putBoolean("Switch Press", liftswitch.get());
+    	
+    }
 		
 	}
 
