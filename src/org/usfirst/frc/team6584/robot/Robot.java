@@ -48,6 +48,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/master
 		drivetrain = new Drivetrain();
 		winch = new Winch();
 		intakepacman = new IntakePacman();
