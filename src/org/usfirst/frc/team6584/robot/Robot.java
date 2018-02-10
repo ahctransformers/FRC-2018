@@ -13,6 +13,7 @@ import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
 import org.usfirst.frc.team6584.robot.subsystems.Lift;
+import org.usfirst.frc.team6584.robot.subsystems.Winch;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,19 +22,17 @@ import org.usfirst.frc.team6584.robot.subsystems.Lift;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+// subsystems, autonomous chooser, oi 
 public class Robot extends IterativeRobot {
 
 	Command autonomousCommand1; 
 	SendableChooser autoChooser; 
 	
 	
-	public static final Drivetrain drivetrain = new Drivetrain();
-
+	public static Drivetrain drivetrain = new Drivetrain();
 	public static final IntakePacman intakepacman = new IntakePacman();
-
-
 	public static final Lift lift = new Lift();
-
+	public static final Winch winch = new Winch();
 	public static OI oi;
 	
 	Command autonomousCommand;
@@ -45,13 +44,20 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+	
+		drivetrain = new DriveTrain();
+		winch = new Winch();
+		intakepacman = new IntakePacman();
+		lift = new Lift ();
+		oi = new OI();
 		
 		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Default", new DriveToDistance (10));
+		
+		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
 		autoChooser.addObject("Forward", new DriveToDistance (10));
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+		SmartDashboard.putData("Reset CountCOder", new ResetEncoders());
 		
-		oi = new OI();
 		chooser.addDefault("Default Auto", new JoystickMove());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -61,6 +67,7 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
+	
 	@Override
 	public void disabledInit() {
 

@@ -48,6 +48,10 @@ public class Drivetrain extends Subsystem {
 		gyro.reset();
 	}
 	
+	public void resetcountencoder(){
+		countencoder.reset();
+	}
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
