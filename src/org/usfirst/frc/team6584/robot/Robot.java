@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 	
-		drivetrain = new DriveTrain();
+		drivetrain = new Drivetrain();
 		winch = new Winch();
 		intakepacman = new IntakePacman();
 		lift = new Lift ();
@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
 		autoChooser.addObject("Forward", new DriveToDistance (10));
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
-		SmartDashboard.putData("Reset CountCOder", new ResetEncoders());
+	
 		
 		chooser.addDefault("Default Auto", new JoystickMove());
 		// chooser.addObject("My Auto", new MyAutoCommand());

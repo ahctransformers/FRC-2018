@@ -33,13 +33,13 @@ public class Turn2AngleA extends Command {
     protected void execute() {
     	this.aTurnSpeed = Math708.getClippedPercentError(Robot.drivetrain.getGucciAngle(), anAngle, 0.35, 1.0); // change theses values 
     	
-    	Robot.drivetrain.moveArcade(0.0, anAngle); 	
+    	Robot.drivetrain.accelerate(0.0, anAngle); 	
     }
     
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(Robot.drivetrain,getGucciAngle()) >= Math.abs(anAngle);
+        return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(anAngle);
     }
 
     // Called once after isFinished returns true
