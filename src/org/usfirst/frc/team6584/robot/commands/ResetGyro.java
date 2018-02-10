@@ -1,24 +1,15 @@
 package org.usfirst.frc.team6584.robot.commands;
 
 import org.usfirst.frc.team6584.robot.Robot;
-import org.usfirst.frc.team708.robot.util.Math708;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Turn2AngleA extends Command {
+public class ResetGyro extends Command {
 
-		double aTurnSpeed;
-		double anAngle; 
-		
-		
-    public Turn2AngleA() {
-    	requires(Robot.drivetrain);
-    	
-    	
-    		this.anAngle = anAngle; 
+    public ResetGyro() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,20 +17,16 @@ public class Turn2AngleA extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrain.resetGyro();
-    	Robot.drivetrain.resetcountencoder(); 
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	this.aTurnSpeed = Math708.getClippedPercentError(Robot.drivetrain.getGucciAngle(), anAngle, 0.35, 1.0); // change theses values 
-    	
-    	Robot.drivetrain.accelerate(0.0, anAngle); 	
+    	Robot.drivetrain.resetGyro();
     }
-    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(anAngle);
+        return true;
     }
 
     // Called once after isFinished returns true

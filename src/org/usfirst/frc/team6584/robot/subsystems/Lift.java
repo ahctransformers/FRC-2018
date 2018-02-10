@@ -3,6 +3,7 @@ package org.usfirst.frc.team6584.robot.subsystems;
 import org.usfirst.frc.team6584.robot.RobotMap;
 import org.usfirst.frc.team6584.robot.commands.JoystickLift;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Lift extends Subsystem {
 	Spark liftmotor = new Spark(RobotMap.liftmotor);
-	Encoder liftencoder = new Encoder(RobotMap.liftencoderA, RobotMap.liftencoderB); 
+	DigitalInput liftswitch = new DigitalInput(RobotMap.liftswitch); 
 	
 	public void liftMove(double speed) {
 		liftmotor.set (speed);
@@ -25,7 +26,7 @@ public class Lift extends Subsystem {
 	}
 
 	public double getDistance (){
-		return liftencoder.getDistance();
+		return liftswitch.getDistance();
 		
 	}
     // Put methods for controlling this subsystem

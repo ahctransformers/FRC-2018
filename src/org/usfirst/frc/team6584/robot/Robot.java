@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team6584.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -10,6 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6584.robot.commands.DriveToDistance;
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
+import org.usfirst.frc.team6584.robot.commands.ResetEncoder;
+import org.usfirst.frc.team6584.robot.commands.ResetGyro;
 import org.usfirst.frc.team6584.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
 import org.usfirst.frc.team6584.robot.subsystems.Lift;
@@ -29,10 +32,10 @@ public class Robot extends IterativeRobot {
 	SendableChooser autoChooser; 
 	
 	
-	public static Drivetrain drivetrain = new Drivetrain();
-	public static final IntakePacman intakepacman = new IntakePacman();
-	public static final Lift lift = new Lift();
-	public static final Winch winch = new Winch();
+	public static Drivetrain drivetrain;
+	public static IntakePacman intakepacman;
+	public static Lift lift;
+	public static Winch winch;
 	public static OI oi;
 	
 	Command autonomousCommand;
@@ -44,8 +47,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-	
-		drivetrain = new DriveTrain();
+		drivetrain = new Drivetrain();
 		winch = new Winch();
 		intakepacman = new IntakePacman();
 		lift = new Lift ();
@@ -54,13 +56,22 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
-		autoChooser.addObject("Forward", new DriveToDistance (10));
+		autoChooser.addObject("Drive to Baseline", new DriveToDistance (10));
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
-		SmartDashboard.putData("Reset CountCOder", new ResetEncoders());
 		
 		chooser.addDefault("Default Auto", new JoystickMove());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		 SmartDashboard.putData("Auto mode", chooser);
+	     SmartDashboard.putData("Reset Encoder", new ResetEncoder());
+	     SmartDashboard.putData(drivetrain);
+	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
+	        
+		
+		 CameraServer.getInstance().startAutomaticCapture(0);
+	  // CameraServer.getInstance().startAutomaticCapture(1);
+		
 	}
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
