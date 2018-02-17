@@ -17,6 +17,8 @@ public class WheelsIn extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.intakepacman.wheelsMove(1);
+    	Robot.drivetrain.resetcountencoder();
+    	Robot.drivetrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -22,8 +22,15 @@ public class RobotMap {
 	// Digital IO
 	
 	public static int liftswitch = 4;
-	public static int countencoderA = 0;
-	public static int countencoderB = 1;
+	public static int countencoderA = 0; //A channel  
+	public static int countencoderB = 1; // B channel 
+	/* Pin 1 - +5VDC power Orange
+	 * Pin 2 - A channel Blue
+	 * Pin 3- Ground Black 
+	 * Pin 4- B Channel Yellow
+	 * channels are signals and so are white wires. 
+	 */
+	
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

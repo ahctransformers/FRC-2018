@@ -13,7 +13,7 @@ public class IntakePacman extends Subsystem {
 	Spark motorLeft = new Spark(RobotMap.leftIntakePacman);
 	Spark motorRight = new Spark(RobotMap.rightIntakePacman);
   
-	double intakeScaleFactor = .35; 
+	double intakeScaleFactor = 1.0; 
 
 	public void wheelsMove (double speed) {
     	

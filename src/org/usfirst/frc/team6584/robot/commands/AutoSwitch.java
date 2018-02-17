@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoSwitch extends CommandGroup {
 
     public AutoSwitch() {
+    	addSequential(new ResetEncoder());
+    	addSequential(new ResetGyro());
         addSequential(new DriveToDistance(80));
         addSequential(new MoveLiftToSwitch());
         addSequential(new WheelsOut());

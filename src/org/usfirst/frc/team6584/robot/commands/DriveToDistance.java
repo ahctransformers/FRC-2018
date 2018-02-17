@@ -8,17 +8,21 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveToDistance extends Command {
-private double gucciDistance ; 
+	
+	private double gucciDistance ; 
 
     public DriveToDistance(double distance) { 
         // Use requires() here to declare subsystem dependencies
         requires(Robot.drivetrain);
+        
         gucciDistance = distance; 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrain.accelerate(1, 0);
+    	Robot.drivetrain.resetcountencoder();
+    	Robot.drivetrain.resetGyro();
     
     }
 

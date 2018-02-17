@@ -29,7 +29,7 @@ import org.usfirst.frc.team6584.robot.subsystems.Winch;
 // subsystems, autonomous chooser, oi 
 public class Robot extends IterativeRobot {
 
-	Command autonomousCommand1; 
+	Command autonomousCommand;
 	SendableChooser autoChooser; 
 	
 	
@@ -39,19 +39,13 @@ public class Robot extends IterativeRobot {
 	public static Winch winch;
 	public static OI oi;
 	
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
-<<<<<<< HEAD
-=======
-	
->>>>>>> origin/master
+
 		drivetrain = new Drivetrain();
 		winch = new Winch();
 		intakepacman = new IntakePacman();
@@ -63,14 +57,10 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
 		autoChooser.addObject("Drive to Baseline", new DriveToDistance (10));
 		autoChooser.addObject("AutoSwitch", new AutoSwitch()); 
-		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
-		chooser.addDefault("Default Auto", new JoystickMove());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
-		
-		 SmartDashboard.putData("Auto mode", chooser);
 	     SmartDashboard.putData("Reset Encoder", new ResetEncoder());
+	     SmartDashboard.putData("Drive to Distance", new DriveToDistance(10));
 	     SmartDashboard.putData(drivetrain);
 	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
 	        		
@@ -108,19 +98,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand1 = chooser.getSelected();
 		autonomousCommand = (Command) autoChooser.getSelected();
-		autonomousCommand.start(); 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand1 != null)
-			autonomousCommand1.start();
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
@@ -138,8 +120,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand1 != null)
-			autonomousCommand1.cancel();
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
 	}
 
 	/**
