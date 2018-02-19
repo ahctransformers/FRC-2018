@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team6584.robot.commands.JoystickMove;
 import org.usfirst.frc.team6584.robot.commands.WheelsIn;
 import org.usfirst.frc.team6584.robot.commands.WheelsOut;
+import org.usfirst.frc.team6584.robot.commands.WinchStop;
+import org.usfirst.frc.team6584.robot.commands.WinchUp;
 import org.usfirst.frc.team708.robot.util.Gamepad;
 
 /**
@@ -23,8 +25,12 @@ public class OI {
 	// The Gamepad has different values, they operate the driver stick and the operator stick.
 	public static int INTAKE_IN = Gamepad.button_L_Shoulder;
 	public static int INTAKE_OUT = Gamepad.button_R_Shoulder;
+	public static int WINCH_ON_BUTTON = Gamepad.button_A;
+	public static int WINCH_STOP_BUTTON = Gamepad.button_Y;
 	// These assign buttons for the intake on the gamepad/operator joystick
 	
+	public static Button winchOnButton = new JoystickButton(operatorstick, WINCH_ON_BUTTON);
+	public static Button winchStopButton = new JoystickButton(operatorstick, WINCH_STOP_BUTTON);
 	
 	public static Button intakeInButton = new JoystickButton(operatorstick, INTAKE_IN);
 	public static Button intakeOutButton = new JoystickButton(operatorstick, INTAKE_OUT);
@@ -32,6 +38,8 @@ public class OI {
 	public OI() { 
 		intakeInButton.whileHeld(new WheelsIn());
 		intakeOutButton.whileHeld(new WheelsOut());
+		winchOnButton.whileHeld(new WinchUp());
+		winchStopButton.whileHeld(new WinchStop());
 		// This is for when the wheels go in and out
 	}
 	
