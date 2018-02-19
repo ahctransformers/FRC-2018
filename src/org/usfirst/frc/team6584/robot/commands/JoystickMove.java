@@ -3,6 +3,7 @@ package org.usfirst.frc.team6584.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team6584.robot.Robot;
+import org.usfirst.frc.team708.robot.util.Gamepad;
 
 /**
  *
@@ -24,6 +25,7 @@ public class JoystickMove extends Command {
 	@Override
 	protected void execute() {
 		Robot.drivetrain.accelerate(Robot.oi.driverstick.getAxis(1), Robot.oi.driverstick.getAxis(0));
+		//Robot.drivetrain.accelerate(Robot.oi.driverstick.getAxis(Gamepad.leftStick_Y), -Robot.oi.driverstick.getAxis(Gamepad.rightStick_X));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

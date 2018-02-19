@@ -20,15 +20,19 @@ public class OI {
 	// number it is.
 	public static Gamepad driverstick = new Gamepad (0);
 	public static Gamepad operatorstick = new Gamepad (1);
-	
+	// The Gamepad has different values, they operate the driver stick and the operator stick.
 	public static int INTAKE_IN = Gamepad.button_L_Shoulder;
 	public static int INTAKE_OUT = Gamepad.button_R_Shoulder;
+	// These assign buttons for the intake on the gamepad/operator joystick
+	
 	
 	public static Button intakeInButton = new JoystickButton(operatorstick, INTAKE_IN);
 	public static Button intakeOutButton = new JoystickButton(operatorstick, INTAKE_OUT);
+	// The joysticks are the functions for the intake in and intake out.
 	public OI() { 
 		intakeInButton.whileHeld(new WheelsIn());
 		intakeOutButton.whileHeld(new WheelsOut());
+		// This is for when the wheels go in and out
 	}
 	
 	// Button button = new JoystickButton(stick, buttonNumber);
