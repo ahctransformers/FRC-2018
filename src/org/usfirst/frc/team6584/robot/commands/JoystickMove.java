@@ -24,7 +24,7 @@ public class JoystickMove extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drivetrain.accelerate(Robot.oi.driverstick.getAxis(1), Robot.oi.driverstick.getAxis(0));
+		Robot.drivetrain.accelerate(-Robot.oi.driverstick.getAxis(1), Robot.oi.driverstick.getAxis(0));
 		//Robot.drivetrain.accelerate(Robot.oi.driverstick.getAxis(Gamepad.leftStick_Y), -Robot.oi.driverstick.getAxis(Gamepad.rightStick_X));
 	}
 
