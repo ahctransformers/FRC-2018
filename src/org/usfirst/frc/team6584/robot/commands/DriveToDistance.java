@@ -20,7 +20,7 @@ public class DriveToDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.accelerate(1, 0);
+    	Robot.drivetrain.accelerate(-.5, 0);
     	Robot.drivetrain.resetcountencoder();
     	Robot.drivetrain.resetGyro();
     
@@ -28,7 +28,7 @@ public class DriveToDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.accelerate(1, 0);
+    	Robot.drivetrain.accelerate(-.5, 0);
     	
     }
 

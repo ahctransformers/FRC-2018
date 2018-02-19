@@ -19,7 +19,7 @@ public class Drivetrain extends Subsystem {
 	ADXRS450_Gyro gyro;
 	DifferentialDrive swagMove;
 	
-	private final double distancePerPulse = 0.0526389;
+	private final double distancePerPulse = 0.095;
 	
 	public Drivetrain () {
 		rightmotor   = new Spark(RobotMap.leftDrivetrainMotor);
