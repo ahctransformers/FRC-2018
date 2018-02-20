@@ -10,7 +10,10 @@ public class AutoSwitch extends CommandGroup {
     public AutoSwitch() {
     	addSequential(new ResetEncoder());
     	addSequential(new ResetGyro());
-        addSequential(new DriveToDistance(80));
+        addSequential(new DriveToDistance(120));
+        addSequential(new Turn2AngleA());
+        addSequential(new DriveToDistance(12));
+        addSequential(new Turn2AngleA()); 
         addSequential(new MoveLiftToSwitch());
         addSequential(new WheelsOut());
         
