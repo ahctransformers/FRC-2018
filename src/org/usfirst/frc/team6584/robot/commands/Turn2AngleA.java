@@ -17,7 +17,7 @@ public class Turn2AngleA extends Command {
     public Turn2AngleA() {
     	requires(Robot.drivetrain);
     	
-    	
+    		this.aTurnSpeed = aTurnSpeed;
     		this.anAngle = anAngle; 
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -31,9 +31,9 @@ public class Turn2AngleA extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	this.aTurnSpeed = Math708.getClippedPercentError(Robot.drivetrain.getGucciAngle(), anAngle, 0.35, 1.0); // change theses values 
+    	this.aTurnSpeed = Math708.getClippedPercentError(Robot.drivetrain.getGucciAngle(), anAngle, 0.90, 1.0); // change theses values 
     	
-    	Robot.drivetrain.accelerate(0.0, anAngle); 	
+    	Robot.drivetrain.accelerate(0.0, aTurnSpeed); 	
     }
     
 
