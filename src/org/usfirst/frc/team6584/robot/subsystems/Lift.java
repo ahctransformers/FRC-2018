@@ -42,6 +42,20 @@ public class Lift extends Subsystem {
     	SmartDashboard.putBoolean("Switch Press", liftswitch.get());
     	
     }
+
+
+
+	public void haloDrive(double moveSpeed, double d, boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public void JoystickLift() {
+		// TODO Auto-generated method stub
+		
+	}
 		
 	}
 

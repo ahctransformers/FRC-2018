@@ -1,32 +1,34 @@
 package org.usfirst.frc.team6584.robot.commands;
 
 import org.usfirst.frc.team6584.robot.Robot;
-import org.usfirst.frc.team708.robot.util.Gamepad;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class JoystickLift extends Command {
+public class LiftSwitch extends Command {
 
-    public JoystickLift() {
+    public LiftSwitch() {
+    	requires(Robot.lift);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift);
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetcountencoder();
-    	Robot.drivetrain.resetGyro();	
+    	Robot.lift.JoystickLift();
+    	
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.liftMove(-Robot.oi.operatorstick.getAxis(Gamepad.rightStick_Y));
+    	Robot.lift.JoystickLift();
+    	
+    	
     }
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;

@@ -40,6 +40,7 @@ public class AutoSwitch extends CommandGroup {
         
         
         addSequential(new MoveLiftToSwitch());
+        addSequential(new LiftForTime(0, 1));
         addSequential(new WheelsOut());
         
     	// Add Commands here:
