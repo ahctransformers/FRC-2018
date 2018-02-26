@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class VeganWaters extends Command {
+public class VeganWaters extends Command { //Do Nothing Autonomous
 
     public VeganWaters() {
         requires(Robot.drivetrain);

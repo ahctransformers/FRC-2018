@@ -1,5 +1,7 @@
 package org.usfirst.frc.team6584.robot.commands;
 
+import org.usfirst.frc.team6584.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,8 +12,35 @@ public class AutoSwitch extends CommandGroup {
     public AutoSwitch() {
     	addSequential(new ResetEncoder());
     	addSequential(new ResetGyro());
-        addSequential(new DriveToDistance(80));
+        addSequential(new DriveToDistance(120));
+        
+        if(Robot.gameData.length() > 0)
+        {
+		  if(Robot.gameData.charAt(0) == 'L')
+		  {
+			  addSequential(new Turn2AngleA(-90, 0.7));
+		        addSequential(new DriveToDistance(12));
+		        addSequential(new Turn2AngleA(90, 0.7));
+			  
+			  //left auto code
+			  
+		  } else {
+			  addSequential(new Turn2AngleA(90, 0.7));
+		        addSequential(new DriveToDistance(12));
+		        addSequential(new Turn2AngleA(-90, 0.7));
+			  
+			  //right auto code
+			  
+		  }
+        }
+        
+        addSequential(new Turn2AngleA(90, 0.7));
+        addSequential(new DriveToDistance(12));
+        addSequential(new Turn2AngleA(-90, 0.7));
+        
+        
         addSequential(new MoveLiftToSwitch());
+        addSequential(new LiftForTime(0, 1));
         addSequential(new WheelsOut());
         
     	// Add Commands here:

@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6584.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,7 +33,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser autoChooser; 
 	
-	
+	public static String gameData;
 	public static Drivetrain drivetrain;
 	public static IntakePacman intakepacman;
 	public static Lift lift;
@@ -55,12 +56,12 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
-		autoChooser.addObject("Drive to Baseline", new DriveToDistance (10));
+		autoChooser.addObject("Drive to Baseline", new DriveToDistance (120));
 		autoChooser.addObject("AutoSwitch", new AutoSwitch()); 
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	     SmartDashboard.putData("Reset Encoder", new ResetEncoder());
-	     SmartDashboard.putData("Drive to Distance", new DriveToDistance(10));
+	     SmartDashboard.putData("Drive to Distance", new DriveToDistance(120));
 	     SmartDashboard.putData(drivetrain);
 	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
 	        		
@@ -98,11 +99,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+          
+                
 		autonomousCommand = (Command) autoChooser.getSelected();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
 	}
 
 	/**
