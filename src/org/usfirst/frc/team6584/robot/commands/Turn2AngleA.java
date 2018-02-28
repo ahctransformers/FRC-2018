@@ -14,7 +14,7 @@ public class Turn2AngleA extends Command {
 		double anAngle; 
 		
 		
-    public Turn2AngleA(double anAngle, double aTurnSpeed) {
+    public Turn2AngleA() {
     	requires(Robot.drivetrain);
     	
     		this.aTurnSpeed = aTurnSpeed;

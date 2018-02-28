@@ -2,7 +2,6 @@
 package org.usfirst.frc.team6584.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,7 +32,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser autoChooser; 
 	
-	public static String gameData;
+	
 	public static Drivetrain drivetrain;
 	public static IntakePacman intakepacman;
 	public static Lift lift;
@@ -99,15 +98,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-          
-                
 		autonomousCommand = (Command) autoChooser.getSelected();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		
 	}
 
 	/**
