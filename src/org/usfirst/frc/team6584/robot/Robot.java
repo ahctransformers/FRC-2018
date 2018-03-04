@@ -55,17 +55,17 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		
 		autoChooser.addDefault("Do Nothing", new DriveToDistance (0));
-		autoChooser.addObject("Drive to Baseline", new DriveToDistance (120));
+		autoChooser.addObject("Drive to Baseline", new DriveToDistance (180));
 		autoChooser.addObject("AutoSwitch", new AutoSwitch()); 
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	     SmartDashboard.putData("Reset Encoder", new ResetEncoder());
-	     SmartDashboard.putData("Drive to Distance", new DriveToDistance(120));
+	     SmartDashboard.putData("Drive to Distance", new DriveToDistance(180));
 	     SmartDashboard.putData(drivetrain);
 	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
 	        		
-		 CameraServer.getInstance().startAutomaticCapture(0);
-		 CameraServer.getInstance().startAutomaticCapture(1);
+		// CameraServer.getInstance().startAutomaticCapture(0);
+		// CameraServer.getInstance().startAutomaticCapture(1);
 		
 	}
 	/**
