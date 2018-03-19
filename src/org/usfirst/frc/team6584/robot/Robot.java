@@ -64,8 +64,8 @@ public class Robot extends IterativeRobot {
 	     SmartDashboard.putData(drivetrain);
 	     SmartDashboard.putData("Reset Gyro", new ResetGyro());
 	        		
-		// CameraServer.getInstance().startAutomaticCapture(0);
-		// CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(0);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		
 	}
 	/**
